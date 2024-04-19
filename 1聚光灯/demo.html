@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>css聚光灯效果</title>
+    <style>
+      /* 设置html的基本字体大小 */
+      html {
+        font-size: 10px;
+      }
+
+      /* 重置所有元素的边距和内边距为0 */
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      /* 设置页面背景颜色，并将内容居中显示 */
+      body {
+        background-color: #222;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+
+      /* 定义聚光灯效果的文本样式 */
+      .demo {
+        color: #444;
+        font-size: 12rem;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        position: relative;
+        letter-spacing: -0.2rem;
+      }
+
+      /* 使用伪元素after来实现聚光灯的动画效果 */
+      .demo:after {
+        content: attr(data-content); /* 使用data-content属性作为内容 */
+        color: transparent; /* 文本颜色透明，以便显示背景图片 */
+        position: absolute;
+        top: 0;
+        left: 0;
+        clip-path: ellipse(12rem 10rem at -0% 50%); /* 初始剪切路径 */
+        -webkit-clip-path: ellipse(12rem 10rem at -0% 50%);
+        animation: donghua 10s infinite; /* 应用动画效果 */
+        background-image: url(./static/bj.jpg); /* 设置背景图片 */
+        background-size: 100%; /* 图片铺满整个元素 */
+        background-position: center center; /* 图片居中 */
+        background-clip: text; /* 背景图片仅填充文本 */
+        -webkit-background-clip: text; /* 支持Webkit内核的浏览器 */
+      }
+
+      /* 定义聚光灯动画 */
+      @keyframes donghua {
+        0% {
+          clip-path: ellipse(12rem 10rem at -0% 50%); /* 动画开始时的剪切路径 */
+        }
+        50% {
+          clip-path: ellipse(
+            12rem 10rem at 100% 50%
+          ); /* 动画中间时的剪切路径，使效果从左到右移动 */
+        }
+        100% {
+          clip-path: ellipse(
+            12rem 10rem at 0% 50%
+          ); /* 动画结束时的剪切路径，回到初始状态 */
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 使用demo类并设置data-content属性来应用聚光灯效果的文本 -->
+    <h1 class="demo" data-content="大家好沉浸式学习前端">
+      大家好沉浸式学习前端
+    </h1>
+  </body>
+</html>

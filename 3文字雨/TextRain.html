@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TextRain</title>
+  </head>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+    body {
+      width: 100%;
+      height: 100%;
+      background-color: #000;
+    }
+  </style>
+  <body>
+    <canvas id="dg"></canvas>
+    <script type="text/javascript">
+      // 获取主画布
+      const cvs = document.getElementById("dg");
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+
+      cvs.width = width;
+      cvs.height = height;
+
+      const ctx = cvs.getContext("2d");
+      // 设置字体大小和计算列数与列宽
+      const fontSize = 20;
+      const columnWidth = fontSize; // 列宽
+      const column = Math.floor(width / columnWidth); // 列数
+
+      // 初始化每一列的下一个字符位置
+      const contentLine = new Array(column).fill(0);
+
+      /**
+       * 渲染视图，绘制文本动画
+       */
+      function renderView() {
+        // 清空画布
+        ctx.fillStyle = "rgba(0,0,0,0.1)";
+        ctx.fillRect(0, 0, width, height);
+        // 遍历每一列，绘制随机字符
+        for (var i = 0; i < column; i++) {
+          const char = randomText(); // 随机获取字符
+          ctx.fillStyle = randomColor(); // 随机设置字体颜色
+
+          ctx.font = `${fontSize}px "Roboto Mono"`; // 设置字体样式
+          const x = columnWidth * i; // 计算字符的x坐标
+          const index = contentLine[i] + 1; // 计算字符的y坐标
+          const y = index * fontSize;
+          ctx.fillText(char, x, y); // 在画布上绘制字符
+          // 如果字符超出画布高度，则重置该列的字符位置；否则，递增字符位置
+          if (y > height && Math.random() > 0.99) {
+            contentLine[i] = 0;
+          } else {
+            contentLine[i]++;
+          }
+        }
+      }
+
+      /**
+       * 随机生成字体颜色
+       * @returns {string} 返回一个随机选择的颜色字符串
+       */
+      function randomColor() {
+        const fontColors = [
+          "#123321",
+          "#a2c3f0",
+          "#f0a2c3",
+          "#c3f0a2",
+          "#f0c3a2",
+          "#a2f0c3",
+          "#c3f0a2",
+        ];
+        return fontColors[Math.floor(Math.random() * fontColors.length)];
+      }
+
+      /**
+       * 随机生成文本字符
+       * @returns {string} 返回一个从预设字符串中随机选择的字符
+       */
+      function randomText() {
+        const TextString = "HelloeveryoneAskforsupport";
+        return TextString[Math.floor(Math.random() * TextString.length)];
+      }
+      // 初始化视图
+      renderView();
+      // 设置定时器，每30毫秒重绘视图
+      setInterval(() => {
+        renderView();
+      }, 30);
+    </script>
+  </body>
+</html>
