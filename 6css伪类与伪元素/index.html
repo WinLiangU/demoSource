@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>7css伪类与伪元素</title>
+    <link rel="stylesheet" href="./css/index.css" />
+    <!-- 伪类 -->
+    <link rel="stylesheet" href="./css/Pseudo-class.css" />
+    <!-- 伪元素 -->
+    <link rel="stylesheet" href="./css/Pseudo-elements.css" />
+  </head>
+  <body>
+    <!-- 
+      1、伪类：为处于某个状态的已有元素添加对应的样式，这个状态是根据用户行为而动态改变的。
+        分为：
+          a、动态伪类：
+              :hover：鼠标移入
+              :active：鼠标点击
+              :focus：获得焦点
+              :visited：访问过
+              :link：未访问过
+          b、静态伪类：
+              :first-child：第一个子元素
+              :last-child：最后一个子元素
+              :nth-child(n)：第n个子元素
+      2、伪元素：为元素添加新的元素，这个元素不是元素，而是元素中的内容。
+        分为：
+          a、动态伪元素：
+              :before：在元素前面添加内容
+              :after：在元素后面添加内容
+          b、静态伪元素：
+              :first-line：第一个行
+              :first-letter：第一个字母
+      3、伪类和伪元素的区别：
+          a、伪类：为元素添加样式，元素本身不变
+          b、伪元素：为元素添加内容，元素本身不变
+      4、伪类和伪元素的优缺点：
+          a、伪类：优点：可以动态改变样式，缺点：元素本身不变
+          b、伪元素：优点：可以动态改变内容，缺点：元素本身不变
+      5、伪类和伪元素的兼容性：
+          a、伪类：兼容性较好，兼容所有浏览器
+          b、伪元素：兼容性较好，兼容所有浏览器
+      6、注意写法：
+          a、伪类：元素:伪类
+          b、伪元素：元素::伪元素
+     -->
+    <div class="root1">
+      <p>1</p>
+      <p>2</p>
+      <p>3</p>
+      <p>4</p>
+      <p>5</p>
+    </div>
+    <p>1</p>
+    <p>2</p>
+    <p>3</p>
+    <p>4</p>
+    <p>5</p>
+    <div class="root2">
+      <p>1</p>
+      <p>2</p>
+      <p>3</p>
+      <p>4</p>
+      <p>5</p>
+    </div>
+
+    <input class="elinput1" />
+    <div class="ela">
+      <a
+        href="file:///E:/VUE/%E5%89%8D%E7%AB%AF/demo/3%E6%96%87%E5%AD%97%E9%9B%A8/TextRain.html"
+        >访问过</a
+      >
+    </div>
+    <div class="ela2">
+      <a href="#">未访问过</a>
+    </div>
+
+    <div class="Pseudo-elements">伪元素</div>
+    <div class="main">
+      <p>哈喽！大家好，这里是一只小菜鸟在学习前端</p>
+      <p>一起进步</p>
+    </div>
+    <div class="main-En">
+      <p>Hello! Hey, guys, this is a rookie learning front</p>
+      <p>Progress together</p>
+    </div>
+  </body>
+</html>

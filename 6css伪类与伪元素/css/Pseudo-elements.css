@@ -1,0 +1,20 @@
+/* 伪元素：为元素添加新的元素，这个元素不是元素，而是元素中的内容。 */
+.Pseudo-elements {
+  background-color: bisque;
+  width: 400px;
+  height: 400px;
+  position: relative;
+}
+
+.Pseudo-elements::before {
+  content: "11";
+}
+.Pseudo-elements::after {
+  content: "22";
+}
+.main::first-line {
+  color: aqua;
+}
+.main-En::first-letter {
+  font-size: 32px;
+}

@@ -1,0 +1,33 @@
+/*  伪类：为处于某个状态的已有元素添加对应的样式，这个状态是根据用户行为而动态改变的。*/
+.root1:hover {
+  background-color: aqua;
+}
+.root2:active {
+  background-color: yellow;
+}
+.elinput1:focus {
+  background-color: yellow;
+}
+
+/* 不知道这个地方为什么不生效
+ */
+.ela1 a:visited {
+  color: red;
+}
+
+.ela2 a:link {
+  background-color: yellow;
+}
+
+p:first-child {
+  background-color: red;
+}
+p:last-child {
+  background-color: green;
+}
+p:nth-child(3) {
+  background-color: aqua;
+}
+
+/* 这个地方有问题 需要评论区大神进行指教一下
+ */
